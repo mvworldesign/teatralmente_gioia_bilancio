@@ -14,9 +14,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data_creazione')->textInput() ?>
+    <?= $form->field($model, 'data_creazione')->hiddenInput(['value' => date("Y-m-d")])->label(false) ?>
 
-    <?= $form->field($model, 'ultima_modifica')->textInput() ?>
+    <?= $form->field($model, 'ultima_modifica')->hiddenInput(['value' => date("Y-m-d")])->label(false) ?>
+    
+    <input type="hidden" value="create" />
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

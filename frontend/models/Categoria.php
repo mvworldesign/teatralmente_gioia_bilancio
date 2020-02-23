@@ -30,7 +30,7 @@ class Categoria extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categoria', 'data_creazione', 'ultima_modifica'], 'required'],
+            [['categoria'], 'required'],
             [['data_creazione', 'ultima_modifica'], 'safe'],
             [['categoria'], 'string', 'max' => 255],
         ];
