@@ -1,13 +1,19 @@
 <?php
-
+/**
+ * Bilancio index
+ * 
+ * @author Mattia Leonardo Angelillo
+ * @version 1.0
+ */
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap\Tabs;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BilancioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Bilancios');
+$this->title = Yii::t('app', 'Bilanci');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bilancio-index">
@@ -17,10 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Bilancio'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
+    
+    <?php
+    $index = '<div id="table-wrapper"><h2>'.Yii::t('app', 'Elenco dei bilanci').'</h2>'.
+        GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -32,7 +38,54 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]).'</div>';
+    
+    $create = '<div id="table-wrapper" class="categoria-create">
+        <div class="header">
+            <h2>'.Yii::t('app', 'Nuovo bilancio').'</h2>
+        </div>'.
+            $this->render("_form", [
+            "model" => $model,
+        ]).
+    '</div>' ?>
+    
+    <?= Tabs::widget([
+        'items' => [
+            [
+                'label' => Yii::t('app', 'Bilanci'),
+                'content' => $index,
+                'options' => [
+                    'id' => 'tab-index-bilancio-content'
+                ],
+                'active' => true,
+            ],
+            [
+                'label' => Yii::t('app', 'Nuovo bilancio'),
+                'content' => $create,
+                'options' => [
+                    'id' => 'tab-create-bilancio-content'
+                ],
+                'active' => false,
+            ]
+        ],
+    ]);
+    ?>
+    
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <!--<?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'data',
+            'nome_bilancio',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>-->
 
 
 </div>

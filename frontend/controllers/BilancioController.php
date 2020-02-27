@@ -35,10 +35,16 @@ class BilancioController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Bilancio();
         $searchModel = new BilancioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
