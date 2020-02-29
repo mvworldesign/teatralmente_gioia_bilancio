@@ -1,6 +1,6 @@
 <?php
 /**
- * Bilancio index
+ * Bilancio, index page
  * 
  * @author Mattia Leonardo Angelillo
  * @version 1.0
@@ -19,10 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="bilancio-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Bilancio'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     
     <?php
     $index = '<div id="table-wrapper"><h2>'.Yii::t('app', 'Elenco dei bilanci').'</h2>'.
@@ -70,22 +66,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
-    
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <!--<?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'data',
-            'nome_bilancio',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>-->
-
 
 </div>
