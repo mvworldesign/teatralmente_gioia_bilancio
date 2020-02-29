@@ -18,7 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title)?></h1>
 <?php 
-    $index = GridView::widget([
+    $index = '<div id="table-wrapper"><h2>'.Yii::t('app', 'Elenco dei bilanci').'</h2>'.
+        $this->render('_search', ['model' => $searchModel]).        
+        GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -31,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]);
+    ]).'</div>';
     
     $create = '<div id="table-wrapper" class="categoria-create">
     <div class="header">

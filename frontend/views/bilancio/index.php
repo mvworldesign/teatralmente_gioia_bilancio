@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <?php
     $index = '<div id="table-wrapper"><h2>'.Yii::t('app', 'Elenco dei bilanci').'</h2>'.
+        $this->render('_search', ['model' => $searchModel]).
         GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
