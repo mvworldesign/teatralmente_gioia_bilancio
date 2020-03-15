@@ -86,8 +86,17 @@ class BilancioController extends Controller
      */
     public function actionView($id)
     {
+        $attivita  = Attivita::findAll(['bilancio_id' => $id]);
+        $passivita = Passivita::findAll(['bilancio_id' => $id]);
+        
+        /*echo "<pre>";
+        print_r($attivita);
+        echo "</pre>";*/
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'attivita' => $attivita,
+            'passivita' => $passivita,
         ]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Attivita;
@@ -102,9 +102,13 @@ class AttivitaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $redirectId=0)
     {
         $this->findModel($id)->delete();
+        
+        if($redirect!=0){
+            return $this->redirect(['bilancio/view', 'id' => $redirectId]);
+        }
 
         return $this->redirect(['index']);
     }
