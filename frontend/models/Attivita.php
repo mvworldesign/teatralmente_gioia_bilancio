@@ -12,7 +12,7 @@ use Yii;
  * @property float $importo
  * @property string $data
  * @property int $bilancio_id
- * @property int $categoria_id
+ * @property int|null $categoria_id
  *
  * @property Bilancio $bilancio
  * @property Categorium $categoria
@@ -33,7 +33,7 @@ class Attivita extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['voce', 'importo', 'data', 'bilancio_id', 'categoria_id'], 'required'],
+            [['importo', 'data', 'bilancio_id'], 'required'],
             [['importo'], 'number'],
             [['data'], 'safe'],
             [['bilancio_id', 'categoria_id'], 'integer'],

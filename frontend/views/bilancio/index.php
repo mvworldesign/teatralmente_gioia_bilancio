@@ -43,7 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2>'.Yii::t('app', 'Nuovo bilancio').'</h2>
         </div>'.
             $this->render("_form", [
-            "model" => $model,
+                "model" => $model,
+                "attivita" => $attivita,
+                "passivita" => $passivita,
         ]).
     '</div>' ?>
     
@@ -55,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => [
                     'id' => 'tab-index-bilancio-content'
                 ],
-                'active' => true,
+                'active' => false,
             ],
             [
                 'label' => Yii::t('app', 'Nuovo bilancio'),
@@ -63,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => [
                     'id' => 'tab-create-bilancio-content'
                 ],
-                'active' => false,
+                'active' => true,
             ]
         ],
     ]);
