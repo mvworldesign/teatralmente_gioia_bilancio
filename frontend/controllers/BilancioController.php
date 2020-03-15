@@ -47,15 +47,6 @@ class BilancioController extends Controller
         if($model->load(Yii::$app->request->post())){
             $tmp = Yii::$app->request->post();
             
-            /*echo "<pre>";
-            print_r($tmp['Attivita']);
-            echo "</pre>";*/
-            
-            echo "<br><br><br>";
-            echo "<pre>";
-            print_r($tmp['Passivita']);
-            echo "</pre>";
-            echo "<hr>";
             if($model->save()){
                 if(isset($tmp['Attivita'])){
                     $tmpAtt = $this->extractFromArray($tmp['Attivita'], "categoria_id");
@@ -65,7 +56,6 @@ class BilancioController extends Controller
                     }
                 }
                 if(isset($tmp['Passivita'])){
-                    echo "OK<br>";
                     $tmpPass = $this->extractFromArray($tmp['Passivita'], "categoria_id");
                     
                     foreach ($tmpPass as $value){
