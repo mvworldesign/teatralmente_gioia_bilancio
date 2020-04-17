@@ -43,9 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2>'.Yii::t('app', 'Nuovo bilancio').'</h2>
         </div>'.
             $this->render("_form", [
-                "model" => $model,
-                "attivita" => $attivita,
+                "model"     => $model,
+                "attivita"  => $attivita,
                 "passivita" => $passivita,
+                "action"    => $action
         ]).
     '</div>' ?>
     

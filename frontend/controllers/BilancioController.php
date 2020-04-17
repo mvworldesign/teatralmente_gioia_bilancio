@@ -73,7 +73,8 @@ class BilancioController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'attivita' => $attivita,
-            'passivita' => $passivita
+            'passivita' => $passivita,
+            'action' => 'index',
         ]);
     }
     
@@ -88,10 +89,6 @@ class BilancioController extends Controller
     {
         $attivita  = Attivita::findAll(['bilancio_id' => $id]);
         $passivita = Passivita::findAll(['bilancio_id' => $id]);
-        
-        /*echo "<pre>";
-        print_r($attivita);
-        echo "</pre>";*/
         
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -128,6 +125,8 @@ class BilancioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $attivita   = Attivita::findAll(['bilancio_id' => $id]);
+        $passivita  = new Passivita();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -135,6 +134,9 @@ class BilancioController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'attivita' => $attivita,
+            'passivita' => $passivita,
+            'action' => 'update',
         ]);
     }
 

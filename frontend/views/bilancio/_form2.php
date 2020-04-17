@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Update form
+ */
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -28,16 +30,14 @@ use yii\widgets\ActiveForm;
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <?= $this->render("_attivita.php", [
-                    'model' => $model,
+                <?= $this->render("_attivita2.php", [
                     'attivita' => $attivita,
-                    'form' => $form,
-                    'action' => $action,
+                    'form' => $form
                 ]); ?>
             </div>
             
             <div class="col-lg-6">
-                <?= $this->render("_passivita.php", [
+                <?= $this->render("_passivita2.php", [
                     "passivita" => $passivita,
                     'form' => $form
                 ]); ?>

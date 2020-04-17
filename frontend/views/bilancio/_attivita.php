@@ -1,24 +1,17 @@
 <?php
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use frontend\models\Categoria;
+use frontend\models\Attivita;
 
-$n_attivita = $form->field($attivita, 'categoria_id')->dropDownList(
-       ArrayHelper::map(Categoria::find()->all(), 'id', 'categoria'),
-           ['prompt' => Yii::t('app', 'Seleziona la categoria')]
-   )->label(Yii::t('app', 'Categoria')) ;
-
-$n_attivita .= $form->field($attivita, 'voce')->textInput();
-
-$n_attivita .= $form->field($attivita, 'importo')->input('number', [
-    'min' => 0,
-    'value' => 0,
-]);
-
-$n_attivita .= $form->field($attivita, 'data')->input('date',[
-    'value' => date('Y-m-d')
-]);
+if($action=="update"){
+    $this->render('_attivita2', [
+        'form' => $form,
+        'attivita' => $attivita,
+    ]);
+}else if($action=="index"){
+    $this->render('_attivita1', [
+        'form' => $form,
+        'attivita' => $attivita,
+    ]);
+}
 ?>
 <h3>Attività</h3>
 
@@ -40,5 +33,4 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/newElement.js',
     [
         'depends' => [\yii\web\JqueryAsset::className()]
     ]
-); 
-?>
+);

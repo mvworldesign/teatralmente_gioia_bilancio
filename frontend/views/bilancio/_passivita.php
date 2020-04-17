@@ -1,24 +1,5 @@
 <?php
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use frontend\models\Categoria;
-
-$n_passivita = $form->field($passivita, 'categoria_id')->dropDownList(
-       ArrayHelper::map(Categoria::find()->all(), 'id', 'categoria'),
-           ['prompt' => Yii::t('app', 'Seleziona la categoria')]
-   )->label(Yii::t('app', 'Categoria')) ;
-
-$n_passivita .= $form->field($passivita, 'voce')->textInput();
-
-$n_passivita .= $form->field($passivita, 'importo')->input('number', [
-    'min' => 0,
-    'value' => 0,
-]);
-
-$n_passivita .= $form->field($passivita, 'data')->input('date',[
-    'value' => date('Y-m-d')
-]);
+if(!$passivita->id) require_once '_passivita1.php';
 ?>
 <h3>Passività</h3>
 
